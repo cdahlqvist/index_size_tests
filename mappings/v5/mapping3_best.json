@@ -1,0 +1,39 @@
+{
+  "template": "best_3_*",
+  "settings": {
+    "index.refresh_interval": "5s",
+    "index.codec": "best_compression",
+    "number_of_shards": 1,
+    "number_of_replicas": 0
+  },
+  "mappings": {
+    "_default_": {
+      "dynamic_templates": [{
+        "string_fields": {
+          "mapping": {
+            "type": "keyword"
+          },
+          "match_mapping_type": "text",
+          "match": "*"
+        }
+      }],
+      "properties": {
+        "@timestamp": { "type": "date" },
+        "@version": { "type": "keyword" },
+        "geoip"  : {
+          "dynamic": true,
+          "properties" : {
+            "ip": { "type": "ip" },
+            "location" : { "type" : "geo_point" },
+            "latitude" : { "type" : "float" },
+            "longitude" : { "type" : "float" }
+          }
+        }
+      },
+      "_all": {
+        "enabled": false
+      }
+    }
+  },
+  "aliases": {}
+}

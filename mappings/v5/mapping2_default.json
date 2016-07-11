@@ -1,0 +1,45 @@
+{
+  "template": "default_2_*",
+  "settings": {
+    "index.refresh_interval": "5s",
+    "number_of_shards": 1,
+    "number_of_replicas": 0
+  },
+  "mappings": {
+    "_default_": {
+      "dynamic_templates": [{
+        "string_fields": {
+          "mapping": {
+            "norms": false,
+            "type": "text",
+            "fields": {
+              "raw": {
+                "ignore_above": 256,
+                "type": "keyword"
+              }
+            }
+          },
+          "match_mapping_type": "string",
+          "match": "*"
+        }
+      }],
+      "properties": {
+        "@timestamp": { "type": "date" },
+        "@version": { "type": "keyword" },
+        "geoip"  : {
+          "dynamic": true,
+          "properties" : {
+            "ip": { "type": "ip" },
+            "location" : { "type" : "geo_point" },
+            "latitude" : { "type" : "float" },
+            "longitude" : { "type" : "float" }
+          }
+        }
+      },
+      "_all": {
+        "enabled": false
+      }
+    }
+  },
+  "aliases": {}
+}

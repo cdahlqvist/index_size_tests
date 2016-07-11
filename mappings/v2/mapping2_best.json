@@ -1,0 +1,51 @@
+{
+  "template": "best_2_*",
+  "settings": {
+    "index.refresh_interval": "5s",
+    "index.codec": "best_compression",
+    "number_of_shards": 1,
+    "number_of_replicas": 0
+  },
+  "mappings": {
+    "_default_": {
+      "dynamic_templates": [{
+        "string_fields": {
+          "mapping": {
+            "index": "analyzed",
+            "norms": {
+              "enabled": false
+            },
+            "type": "string",
+            "fields": {
+              "raw": {
+                "index": "not_analyzed",
+                "ignore_above": 256,
+                "type": "string",
+                "doc_values": true
+              }
+            }
+          },
+          "match_mapping_type": "string",
+          "match": "*"
+        }
+      }],
+      "properties": {
+        "@timestamp": { "type": "date" },
+        "@version": { "type": "string", "index": "not_analyzed" },
+        "geoip"  : {
+          "dynamic": true,
+          "properties" : {
+            "ip": { "type": "ip" },
+            "location" : { "type" : "geo_point" },
+            "latitude" : { "type" : "float" },
+            "longitude" : { "type" : "float" }
+          }
+        }
+      },
+      "_all": {
+        "enabled": false
+      }
+    }
+  },
+  "aliases": {}
+}
