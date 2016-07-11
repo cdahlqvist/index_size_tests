@@ -27,6 +27,7 @@
       "properties": {
         "@timestamp": { "type": "date" },
         "@version": { "type": "keyword" },
+        "message": { "type": "text", "index": false },
         "geoip"  : {
           "dynamic": true,
           "properties" : {
