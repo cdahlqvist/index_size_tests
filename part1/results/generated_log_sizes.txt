@@ -1,4 +1,3 @@
--rw-rw-r-- 1 ec2-user ec2-user  67644119 Jul 13 06:19 logs
--rw-rw-r-- 1 ec2-user ec2-user 287260208 Jul 13 06:28 logs_maxi
--rw-rw-r-- 1 ec2-user ec2-user 163362211 Jul 13 06:29 logs_midi
--rw-rw-r-- 1 ec2-user ec2-user  98131321 Jul 13 06:29 logs_mini
+-rw-rw-r-- 1 ec2-user ec2-user 155076344 Jul 18 18:16 logs_midi
+-rw-rw-r-- 1 ec2-user ec2-user 287260208 Jul 18 18:16 logs_maxi
+-rw-rw-r-- 1 ec2-user ec2-user  98131321 Jul 18 18:17 logs_mini
